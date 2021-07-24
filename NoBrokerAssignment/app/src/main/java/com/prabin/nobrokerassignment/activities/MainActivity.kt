@@ -4,16 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.prabin.nobrokerassignment.R
-import com.prabin.nobrokerassignment.data.ApiClient
-import com.prabin.nobrokerassignment.data.Network
-import com.prabin.nobrokerassignment.data.ResponseDTO
 import com.prabin.nobrokerassignment.listeners.ItemClickListener
 import com.prabin.nobrokerassignment.recyclerview.DataAdapter
 import com.prabin.nobrokerassignment.roomDb.DataApplication
@@ -21,10 +16,6 @@ import com.prabin.nobrokerassignment.roomDb.DataEntity
 import com.prabin.nobrokerassignment.roomDb.DataViewModel
 import com.prabin.nobrokerassignment.roomDb.DataViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.item_layout.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 
 class MainActivity : AppCompatActivity(), ItemClickListener {
@@ -97,32 +88,7 @@ class MainActivity : AppCompatActivity(), ItemClickListener {
      * this function is used for api call
      */
     private fun callApi(viewModel: DataViewModel) {
-        val apiClient = Network.getInstance().create(ApiClient::class.java)
-
-        apiClient.getData().enqueue(object : Callback<List<ResponseDTO>> {
-            override fun onResponse(
-                call: Call<List<ResponseDTO>>,
-                response: Response<List<ResponseDTO>>
-            ) {
-
-                val itemList = response.body()
-                for (i in itemList!!.indices) {
-                    Log.d("prabin", itemList[i].title!!)
-                    val dataEntity =
-                        DataEntity(
-                            i + 1,
-                            itemList[i].image!!,
-                            itemList[i].title!!,
-                            itemList[i].subTitle!!
-                        )
-                    viewModel.addData(dataEntity)
-                }
-            }
-
-            override fun onFailure(call: Call<List<ResponseDTO>>, t: Throwable) {
-                Toast.makeText(this@MainActivity, "No Connection", Toast.LENGTH_SHORT).show()
-            }
-        })
+        viewModel.getAllData(this)
     }
 
     /**
