@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
@@ -36,6 +37,8 @@ class MainActivity : AppCompatActivity(), ItemClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        shimmerFrameLayout.startShimmer()
+
         val application = application as DataApplication
         val repo = application.dataRepo
         val viewModelFactory = DataViewModelFactory(repo)
@@ -46,6 +49,8 @@ class MainActivity : AppCompatActivity(), ItemClickListener {
         recyclerView.adapter = dataAdapter
 
         viewModel.getData().observe(this, {
+            shimmerFrameLayout.stopShimmer()
+            shimmerFrameLayout.visibility = View.GONE
             dataList.clear()
             dataList.addAll(it)
             dataAdapter.notifyDataSetChanged()
@@ -56,8 +61,12 @@ class MainActivity : AppCompatActivity(), ItemClickListener {
         }
 
         itemSearch(viewModel, this)
+
     }
 
+    /**
+     * this function is watching text changing and providing search result according to that
+     */
     private fun itemSearch(viewModel: DataViewModel, mainActivity: MainActivity) {
         etItems.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -69,6 +78,8 @@ class MainActivity : AppCompatActivity(), ItemClickListener {
                 } else {
                     "title"
                 }
+                shimmerFrameLayout.stopShimmer()
+                shimmerFrameLayout.visibility = View.GONE
                 viewModel.getSearch(search).observe(mainActivity, {
                     dataList.clear()
                     dataList.addAll(it)
@@ -82,6 +93,9 @@ class MainActivity : AppCompatActivity(), ItemClickListener {
         })
     }
 
+    /**
+     * this function is used for api call
+     */
     private fun callApi(viewModel: DataViewModel) {
         val apiClient = Network.getInstance().create(ApiClient::class.java)
 
@@ -108,10 +122,12 @@ class MainActivity : AppCompatActivity(), ItemClickListener {
             override fun onFailure(call: Call<List<ResponseDTO>>, t: Throwable) {
                 Toast.makeText(this@MainActivity, "No Connection", Toast.LENGTH_SHORT).show()
             }
-
         })
     }
 
+    /**
+     * this clickListener listens item click and sends data to the next screen
+     */
     override fun onItemClicked(dataEntity: DataEntity) {
         val intent = Intent(this, DetailsActivity::class.java)
         intent.putExtra("dataEntity", dataEntity)

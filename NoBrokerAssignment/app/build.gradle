@@ -78,4 +78,6 @@ dependencies {
     // sdp("https://github.com/intuit/sdp")
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
 
+    // Shimmer recyclerView("https://facebook.github.io/shimmer-android/")
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
 }

@@ -7,53 +7,55 @@
     app:cardCornerRadius="7dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?selectableItemBackground"
         android:paddingStart="@dimen/_5sdp"
         android:paddingEnd="@dimen/_10sdp">
 
         <ImageView
-            android:id="@+id/ivItem"
+            android:id="@+id/ivItemShimmer"
             android:layout_width="@dimen/_50sdp"
             android:layout_height="@dimen/_50sdp"
             android:layout_margin="@dimen/_7sdp"
+            android:background="@color/grey"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="wrap_content"
+            android:id="@+id/tvTitleShimmer"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_15sdp"
             android:layout_marginTop="@dimen/_5sdp"
-            android:layout_toEndOf="@id/ivItem"
-            android:text="title"
+            android:layout_toEndOf="@id/ivItemShimmer"
+            android:background="@color/grey"
+            android:textAlignment="textStart"
             android:textColor="@color/black"
             android:textSize="@dimen/_16sdp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/tvDesc"
-            app:layout_constraintStart_toEndOf="@id/ivItem"
+            app:layout_constraintBottom_toTopOf="@id/tvDescShimmer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivItemShimmer"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tvDesc"
+            android:id="@+id/tvDescShimmer"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_15sdp"
-            android:layout_toEndOf="@id/ivItem"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_toEndOf="@id/ivItemShimmer"
+            android:background="@color/grey"
             android:ellipsize="end"
             android:maxLines="2"
-            android:text="desc"
             android:textAlignment="textStart"
             android:textSize="@dimen/_12sdp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/ivItem"
-            app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+            app:layout_constraintStart_toEndOf="@id/ivItemShimmer"
+            app:layout_constraintTop_toBottomOf="@id/tvTitleShimmer" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
