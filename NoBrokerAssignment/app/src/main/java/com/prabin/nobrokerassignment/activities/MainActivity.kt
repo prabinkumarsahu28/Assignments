@@ -1,7 +1,8 @@
-package com.prabin.nobrokerassignment
+package com.prabin.nobrokerassignment.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.prabin.nobrokerassignment.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
