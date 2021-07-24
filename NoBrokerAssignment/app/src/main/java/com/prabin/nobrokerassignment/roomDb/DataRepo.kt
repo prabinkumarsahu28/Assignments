@@ -10,6 +10,10 @@ class DataRepo(private val dataDao: DataDao) {
         return dataDao.getData()
     }
 
+    fun getSearch(search:String): LiveData<List<DataEntity>> {
+        return dataDao.getSearch(search)
+    }
+
     fun addData(dataEntity: DataEntity) {
         CoroutineScope(Dispatchers.IO).launch {
             dataDao.addData(dataEntity)

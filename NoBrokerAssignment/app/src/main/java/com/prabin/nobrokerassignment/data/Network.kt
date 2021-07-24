@@ -11,7 +11,7 @@ class Network {
             HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
 
         fun getInstance(): Retrofit {
-            return Retrofit.Builder().baseUrl("https://api.jsonbin.io/")
+            return Retrofit.Builder().baseUrl("https://gist.githubusercontent.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(OkHttpClient.Builder().addInterceptor(httpLoggingInterceptor).build())
                 .build()

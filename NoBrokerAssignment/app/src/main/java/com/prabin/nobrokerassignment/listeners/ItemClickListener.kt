@@ -1,7 +1,7 @@
 package com.prabin.nobrokerassignment.listeners
 
-import com.prabin.nobrokerassignment.data.ResponseDTO
+import com.prabin.nobrokerassignment.roomDb.DataEntity
 
 interface ItemClickListener {
-    fun onItemClicked(responseDTO: ResponseDTO)
+    fun onItemClicked(dataEntity: DataEntity)
 }

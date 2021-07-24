@@ -65,7 +65,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.6.1'
     // This library is used by retrofit internally to convert json-pojo and pojo-json
     implementation 'com.squareup.retrofit2:converter-gson:2.6.1'
-    //This library is used to observe the API logs, Http status code and the API response
+    // This library is used to observe the API logs, Http status code and the API response
     implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
 
     // LottieAnimation("https://github.com/airbnb/lottie-android")
@@ -77,4 +77,5 @@ dependencies {
 
     // sdp("https://github.com/intuit/sdp")
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
+
 }

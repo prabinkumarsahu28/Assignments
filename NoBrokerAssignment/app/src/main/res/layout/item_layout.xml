@@ -41,15 +41,17 @@
 
         <TextView
             android:id="@+id/tvDesc"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_15sdp"
             android:layout_toEndOf="@id/ivItem"
             android:ellipsize="end"
-            android:maxLines="2"
+            android:maxLines="3"
             android:text="desc"
+            android:textAlignment="textStart"
             android:textSize="@dimen/_12sdp"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/ivItem"
             app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 

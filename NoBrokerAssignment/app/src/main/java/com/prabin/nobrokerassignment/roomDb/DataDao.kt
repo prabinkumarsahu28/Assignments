@@ -13,4 +13,7 @@ interface DataDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun addData(dataEntity: DataEntity)
+
+    @Query("SELECT * FROM data_table WHERE title LIKE '%' || :search || '%' OR subTitle LIKE '%' || :search || '%'")
+    fun getSearch(search: String): LiveData<List<DataEntity>>
 }

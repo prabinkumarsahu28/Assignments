@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.prabin.nobrokerassignment.R
-import com.prabin.nobrokerassignment.data.ResponseDTO
 import com.prabin.nobrokerassignment.listeners.ItemClickListener
+import com.prabin.nobrokerassignment.roomDb.DataEntity
 
 class DataAdapter(
-    private val dataList: List<ResponseDTO>,
+    private val dataList: List<DataEntity>,
     private val itemClickListener: ItemClickListener
 ) :
     RecyclerView.Adapter<DataViewHolder>() {
