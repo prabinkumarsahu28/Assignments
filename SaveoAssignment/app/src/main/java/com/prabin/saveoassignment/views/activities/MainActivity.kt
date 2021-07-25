@@ -3,6 +3,7 @@ package com.prabin.saveoassignment.views.activities
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
@@ -36,6 +37,9 @@ class MainActivity : AppCompatActivity(), ShowClickListener {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+        binding.shimmerHorizontal.startShimmer()
+        binding.shimmerVertical.startShimmer()
 
         val repo = MoviesRepo()
         val viewModelFactory = MoviesViewModelFactory(repo)
@@ -113,6 +117,11 @@ class MainActivity : AppCompatActivity(), ShowClickListener {
      */
     private fun callApi(viewModel: MoviesViewModel) {
         viewModel.getShows(1).observe(this, {
+            binding.apply {
+                shimmerVertical.hideShimmer()
+                shimmerVertical.visibility = View.GONE
+                tvNowShowing.visibility = View.VISIBLE
+            }
             showsModel.clear()
             val result = it.data!!
             showsModel.addAll(result)
@@ -121,6 +130,8 @@ class MainActivity : AppCompatActivity(), ShowClickListener {
         })
 
         viewModel.getMovies("god").observe(this, {
+            binding.shimmerHorizontal.hideShimmer()
+            binding.shimmerHorizontal.visibility = View.GONE
             responseList.clear()
             val result = it.data!!
             responseList.addAll(result)

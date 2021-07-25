@@ -3,9 +3,6 @@ package com.prabin.saveoassignment.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
-import androidx.lifecycle.viewModelScope
-import androidx.paging.PagingData
-import androidx.paging.cachedIn
 import com.prabin.saveoassignment.model.ResponseModel
 import com.prabin.saveoassignment.model.ShowModel
 import com.prabin.saveoassignment.network.Resource
@@ -29,7 +26,4 @@ class MoviesViewModel(private val repo: MoviesRepo) : ViewModel() {
         }
     }
 
-    fun getPagingShows(): LiveData<PagingData<ShowModel>>{
-        return repo.paginationData().cachedIn(viewModelScope)
-    }
 }
