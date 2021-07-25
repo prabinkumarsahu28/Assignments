@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_130sdp"
         android:scaleType="centerCrop"
-        android:src="@drawable/user" />
+        android:src="@drawable/user"
+        android:transitionName="image_transition" />
 
 </androidx.cardview.widget.CardView>

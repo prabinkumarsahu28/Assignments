@@ -5,9 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.prabin.saveoassignment.R
 import com.prabin.saveoassignment.clicklisteners.ShowClickListener
-import com.prabin.saveoassignment.model.ResponseModel
 import com.prabin.saveoassignment.model.ShowModel
-import com.prabin.saveoassignment.models.ShowsModel
 
 class ShowsAdapter(
     private val responseList: List<ShowModel>,
@@ -27,4 +25,5 @@ class ShowsAdapter(
     override fun getItemCount(): Int {
         return responseList.size
     }
+
 }

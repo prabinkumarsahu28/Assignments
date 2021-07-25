@@ -13,7 +13,7 @@ class HorShowsViewHolder(private val view: View) : RecyclerView.ViewHolder(view)
         view.apply {
             Glide.with(this).load(responseModel.show?.image!!.original).into(ivHorImg)
             ivHorImg.setOnClickListener {
-                showClickListener.onMovieClicked(responseModel)
+                showClickListener.onMovieClicked(responseModel, ivHorImg)
             }
         }
     }
