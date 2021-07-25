@@ -2,7 +2,7 @@ package com.prabin.saveoassignment.model
 
 import com.google.gson.annotations.SerializedName
 
-data class 	MoviesModel(
+data class ResponseModel(
 
 	@field:SerializedName("score")
 	val score: Any? = null,
